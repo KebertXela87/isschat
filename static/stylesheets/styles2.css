@@ -1,0 +1,99 @@
+#popupbox{
+  margin: 0; 
+  margin-left: 0%; 
+  margin-right: 70%;
+  margin-top: 0px; 
+  padding-top: 10px; 
+  width: 100%; 
+  height: 170px;
+  background: #FFFFFF; 
+  border: 0; 
+  z-index: 9; 
+  font-family: arial; 
+  visibility: hidden; 
+}
+
+#loggedin, #loggedin2, #searchpane {
+  visibility: hidden;
+}
+
+#badpass, #noresults {
+  visibility: hidden;
+  height: 0;
+}
+
+.search td {
+	text-align: left;
+	vertical-align: top;
+	padding: 8px;
+	border-top: 1px solid white;
+}
+
+.search th {
+	font-size: 1em;
+	background-color: #0088cc;
+	color: white;
+	text-align: left;
+	vertical-align: top;
+	padding: 8px;
+}
+
+.search tr:nth-child(odd) {
+	background-color: #aeaeae;
+	color: white;
+}
+
+.tableleft {
+  width: 230px;
+  vertical-align: top;
+  padding-left: 0;
+}
+
+.tableright {
+  vertical-align: top;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+input[type="submit"], .cursor {
+  cursor: pointer;
+}
+
+input[type="submit"].button {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	background-color: transparent;
+	border-radius: 0.35em;
+	border: solid 4px #686868;
+	color: #686868 !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	height: 3.15em;
+	height: calc(2.75em + 6px);
+	line-height: 2.75em;
+	min-width: 10em;
+	padding: 0 1.5em;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+input[type="submit"].button:hover {
+	border-color: #49bf9d;
+	color: #49bf9d !important;
+}
+
+input[type="submit"].button:active {
+	background-color: rgba(73, 191, 157, 0.1);
+	border-color: #49bf9d;
+	color: #49bf9d !important;
+}

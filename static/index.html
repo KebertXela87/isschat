@@ -1,0 +1,140 @@
+<!doctype html>
+<html ng-app="ISSChatApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Space</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/styles2.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.4/socket.io.js"></script>
+    <script src="js/controller.js"></script>
+    
+  </head>
+  <body onload="javascript:login('show')">
+    <div class="container" ng-controller="ChatController">
+
+      <div class="wrapper" >
+        <header>
+          <h1>Chat</h1>
+          <p>Live chat the live feed</p>
+    
+          
+          <div id="popupbox"> 
+            <table>
+              <tr>
+                <td class="tableleft">
+                
+                  <h1>Login</h1>
+                  <form ng-submit="processLogin()">
+                    <p>
+                      <input type="text" ng-model="name" ng-change="setName()" placeholder="Username" size="25" />
+                    </p>
+                    <p>
+                      <input ng-model="password" type="password" placeholder="Password" size="25" />
+                    </p>
+                    <p>
+                      <input type="submit" class="span1 btn btn-primary" value="Login" ng-disabled="!password">
+                    </p>
+                    <p id="badpass">Login not valid...</p>
+                  </form>
+                  <br />
+              
+                </td>
+                <td class="tableright">
+                  
+                  <form method="GET" action="/register">
+                    <input type="submit" class="button" value="REGISTER" />
+                  </form>
+
+                </td>
+              </tr>
+            </table>
+          </div> 
+        
+          <div id="loggedin"><p>Logged in as: <b ng-bind="name"></b>!</p></div>
+
+
+
+
+          <table>
+            <tr>
+              <td class="tableleft">
+                <!-- create a room form -->
+                <form ng-submit="createRoom()">
+                  <p>
+                    <input type="text" ng-model="roomName" placeholder="Create Room" size="25">
+                    <input type="submit" value="Create" ng-disabled="!roomName">
+                  </p>
+                </form>
+                
+                <!-- list the available rooms -->
+                <div id="roompane">
+                  <span ng-repeat="room in rooms">
+                    <span ng-click="joinRoom(room)" class="cursor"><b ng-bind="room"></b></span><br />
+                  </span>
+                </div>
+                
+              </td>
+              <td>
+                <p>Currently in room: <b ng-bind="currentRoom"></b></p>
+                <div class="scroll" id="msgpane">
+                  <p ng-repeat="msg in messages">
+                    <b ng-bind="msg.name"></b>:&nbsp;
+                    <span ng-bind="msg.text"></span>
+                  </p>
+                </div>
+
+                <div id="loggedin2">
+                  <form ng-submit="send()">
+                    <input type="text" ng-model="text" placeholder="Type a message...">
+                    <input type="submit" value="Send">
+                  </form>
+                  <br />
+                  <form ng-submit="search()">
+			              <input type="text" ng-model="searchTerm" placeholder="Search"></textarea>
+			              <input type="submit" value="Find" />
+                  </form>
+            
+                  <div id="noresults"><br /><p>No Results found!</p></div>
+
+                  <div id="searchpane">
+                    <table class="search">
+                      <tr><th>Name</th><th>Message</th></tr>
+                      <tr ng-repeat="row in searchResults">
+                        <td><span ng-bind="row.name"></span></td>
+                        <td><span ng-bind="row.text"></span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+            
+              </td>
+            </tr>
+          </table>
+
+  
+        </header>
+        <section>
+          
+          <h1>ISS Live</h1>
+          
+          <iframe width="480" height="264" src="https://www.ustream.tv/embed/9408562?ub=ff3d23&amp;lc=ff3d23&amp;oc=ffffff&amp;uc=ffffff&amp;html5ui=1" allowfullscreen="true" webkitallowfullscreen="true" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
+
+          <br />
+          
+          <h2>Earth Viewing Experiment</h2>
+
+          <iframe width="480" height="270" src="https://www.ustream.tv/embed/17074538?html5ui=1" allowfullscreen="true" webkitallowfullscreen="true" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
+
+          <p>International Space Station Live Feed</p>
+        
+        </section>
+      </div>
+      <script src="js/scale.fix.js"></script>
+    </div>
+  </body>
+</html>

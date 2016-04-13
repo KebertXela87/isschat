@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Space</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/styles2.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+    
+  </head>
+  <body onload="javascript:login('show')">
+    <div class="container">
+
+      <div class="wrapper" >
+        <header>
+          <h1>Register</h1>
+          <p>Register to use the live chat feed!</p>
+    
+          <div id="register">
+
+            {% if baduser == "true" %}
+            <p>We're sorry but that username is in use.</p>
+            {% endif %}
+
+            <h1>Create New User</h1>
+            <form method="post" action="/register">
+            <p>
+            <input type="text" id="username" name="username" placeholder="Username" size="40" /></p>
+            <p>
+            <input type="password" id="password" name="password" placeholder="Password" size="40" /></p>
+
+            <h3>Current Rooms:</h3>
+            <p>
+            {% for room in checkboxes %}
+						<input type="checkbox" id={{room}} name={{room}} {% if room == 'General' %}checked{% endif %}><label for={{room}}>{{room}}</label>
+					  {% endfor %}
+            </p>
+            <p><input type="submit" value="Register" name="submit" /></p>
+            </form>
+            <form action="/">
+              <p><input type="submit" value="Back" /></p>
+            </form>
+          </div>
+  
+        </header>
+        <section>
+        
+        </section>
+      </div>
+      <script src="js/scale.fix.js"></script>
+    </div>
+  </body>
+</html>
